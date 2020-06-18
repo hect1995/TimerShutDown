@@ -1,11 +1,19 @@
 language: cpp
-compiler: cl # Perhaps really not necessary
+compiler: cl
 os: windows
 script:
-    - source ./run_command_and_apply_environment_differences.sh "call vcvars64_vs2017.bat"
-    - mkdir build
-    - cd build
-    - cmake -G "NMake Makefiles" .. # We use nmake, because that's available
-    - nmake all
-    - 7z a meli.zip meli # Zip the artifact (along with the dependencies, in order to use in automated releases later.)
-    - ls # Checkout the build directory; what is inside?
+- source ./run_command_and_apply_environment_differences.sh "call vcvars64_vs2017.bat"
+- mkdir build
+- cd build
+- cmake -G "NMake Makefiles" ..
+- nmake all
+- 7z a <artifact name>.zip <artifact path>
+- ls
+deploy:
+  provider: releases
+  api_key:
+    secure: Bnyr2Rd9tVxSAMfu7I7YHw2RmEmNkCBXQqHoWwalGYnxWfNZvnr1WKgGiAffTwrAwe+UwUnF68GAMqPojt3fLgaoiWbE2a6XEKcqbsC3g3wPxT/ZoEmAd6Y7yi6qWp6FMjbaNWxXk7nNiGjAfkjOUccpC4iopZLX6jkkjDg/sNlmEpmm1uvK4OFDLXCfjOyrQ7u28Ok5OjGr5ZmXiEhGNan6KChNQ2a/ox9FEuLOz6B4PDBNk5ffY056FYlAb82J347PSf4Uforf9lGvG8EYU1aVqICAUobzF+jGWmG8XHJmL6UmyQ2lqoa3/dGTztLdmaCN2CbBoxhOEwa5MnY27L3rKN+B2bTRUin4yzX6osMEK/iPn6d4AAlwb277qrZzXY/memvZn6tBPaQTryXZzSCPoaVgnUsgjLWa5c43EA3xoXVMesgSwmMtOnTZ9F0uxo6e+LbZ0MjpSnrCy7wvgPyfRvgrBWS9awioe+5MyWu2Uio0IVhtC+NkyRkByGblyQAI8pB+jQhO6lmWWdQM5RUDcj4KLN1Zv1IKZdOt/Gk3Gxaf9y6rEQPj1VNxjNR0ZGp5BQ473SgybSBq0Ej5JBmR83Wu3SyKNPzTKN9vRyxIYxkGeM2BJTfi+MijeQv1Rc4EG6diN61CTz9ByfA2v6fC9Z0DT+Fc2zmFA2YlK6M=
+  file: meli
+  on:
+    repo: hect1995/TimerShutDown
+  skip_cleanup: 'true'
