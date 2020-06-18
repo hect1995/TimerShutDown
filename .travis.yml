@@ -7,7 +7,7 @@ script:
 - cd build
 - cmake -G "NMake Makefiles" ..
 - nmake all
-- 7z a <artifact name>.zip <artifact path>
+- 7z a meli.zip meli
 - ls
 deploy:
   provider: releases
