@@ -7,5 +7,5 @@ script:
     - cd build
     - cmake -G "NMake Makefiles" .. # We use nmake, because that's available
     - nmake all
-    - 7z a <artifact name>.zip <artifact path> # Zip the artifact (along with the dependencies, in order to use in automated releases later.)
+    - 7z a meli.zip meli # Zip the artifact (along with the dependencies, in order to use in automated releases later.)
     - ls # Checkout the build directory; what is inside?
