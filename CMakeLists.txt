@@ -9,13 +9,8 @@ set(CMAKE_PREFIX_PATH "/Users/hectoresteban/Qt/5.15.0/clang_64/lib/cmake/Qt5")
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
-# search for pkg-config
-include (FindPkgConfig)
-if (NOT PKG_CONFIG_FOUND)
-    message (FATAL_ERROR "pkg-config not found")
-endif ()
-
+set(CMAKE_AUTOSTATICPLUGINS ON)
+list(PREPEND CMAKE_FIND_LIBRARY_SUFFIXES .a .lib)
 find_package(Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED)
 add_executable(timer TimerShutDown.cpp)
 
