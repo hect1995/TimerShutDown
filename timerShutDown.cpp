@@ -1,4 +1,4 @@
-#include <sstream>
+/*#include <sstream>
 #include <iostream>
 
 int main(){
@@ -9,4 +9,17 @@ int main(){
     int seconds = 60*n;
     ss << "shutdown -s -t " << seconds;
     system( ss.str().c_str() ); // str() returns a std::string with the contents of the stream, c_str() the equivalent C string
+}
+*/
+
+#include "notepad.h"
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication EditorApp(argc, argv);
+    Notepad Editor;
+    Editor.show();
+
+    return EditorApp.exec();
 }
