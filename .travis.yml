@@ -17,5 +17,3 @@ deploy:
   on:
     repo: hect1995/TimerShutDown
   skip_cleanup: 'true'
-  on:
-    tags: true
